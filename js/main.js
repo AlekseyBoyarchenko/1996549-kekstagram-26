@@ -51,13 +51,13 @@ const DESCRIPTIONS = [
   'Как-то так...',
 ];
 
-let photoIdArr = [];
+const photoIdArr = [];
 
 for (let i=1; i<=MAX_PHOTOS_DESCRIPTION; i++) {
   photoIdArr.push(i);
 }
 
-let commentIdArr = [];
+const commentIdArr = [];
 
 for (let i=1; i<=1000; i++) {
   commentIdArr.push(i);
