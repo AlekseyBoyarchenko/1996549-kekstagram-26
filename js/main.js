@@ -19,6 +19,7 @@ function checkStringLength (string, maxLength) {
 checkStringLength ('141',140);
 
 const MAX_PHOTOS_DESCRIPTION = 25;
+const MAX_COMMENTS_PHOTO = MAX_PHOTOS_DESCRIPTION*2;
 
 const NAMES = [
   'Вася',
@@ -51,42 +52,44 @@ const DESCRIPTIONS = [
   'Как-то так...',
 ];
 
-const photoIdArr = [];
+const idNumders = [];
 
 for (let i=1; i<=MAX_PHOTOS_DESCRIPTION; i++) {
-  photoIdArr.push(i);
+  idNumders.push(i);
 }
 
-const commentIdArr = [];
+const commentIdNumders = [];
 
-for (let i=1; i<=1000; i++) {
-  commentIdArr.push(i);
+for (let i=1; i<=MAX_COMMENTS_PHOTO; i++) {
+  commentIdNumders.push(i);
 }
 
-function createComment () {
+function CreateComment () {
   return {
-    id: commentIdArr.shift(),
+    id: commentIdNumders.shift(),
     avatar: `img/avatar-${getRandomNumber (1, 6)}.svg`,
     message: MESSAGES[getRandomNumber (0, MESSAGES.length-1)],
     name: NAMES[getRandomNumber (0, NAMES.length-1)],
   };
 }
 
-function createCommentList () {
+function CreateCommentList () {
   const COMMENT_COUNT = getRandomNumber(1,2);
-  const COMMENT_PHOTO = Array.from({length: COMMENT_COUNT}, createComment);
+  const COMMENT_PHOTO = Array.from({length: COMMENT_COUNT}, CreateComment);
   return COMMENT_PHOTO;
 }
 
-function createPhoto () {
-  const ID = photoIdArr.shift();
+function CreatePhoto () {
+  const id = idNumders.shift();
   return {
-    ID,
-    url: `photos/${ID}.jpg`,
+    id,
+    url: `photos/${id}.jpg`,
     description: DESCRIPTIONS[getRandomNumber (0, DESCRIPTIONS.length-1)],
     likes: getRandomNumber(15, 200),
-    comments: createCommentList (),
+    comments: CreateCommentList (),
   };
 }
 
-const PHOTO = Array.from({length: MAX_PHOTOS_DESCRIPTION}, createPhoto);
+const PHOTOS = Array.from({length: MAX_PHOTOS_DESCRIPTION}, CreatePhoto);
+
+PHOTOS.join();
