@@ -54,13 +54,13 @@ const DESCRIPTIONS = [
 
 const idNumders = [];
 
-for (let i=1; i<=MAX_PHOTOS_DESCRIPTION; i++) {
+for (let i = 1; i <= MAX_PHOTOS_DESCRIPTION; i++) {
   idNumders.push(i);
 }
 
 const commentIdNumders = [];
 
-for (let i=1; i<=MAX_COMMENTS_PHOTO; i++) {
+for (let i = 1; i <= MAX_COMMENTS_PHOTO; i++) {
   commentIdNumders.push(i);
 }
 
