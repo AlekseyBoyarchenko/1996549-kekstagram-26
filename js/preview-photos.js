@@ -1,19 +1,18 @@
-function createRandomPhoto (photo) {
+function createRandomPhoto (photos) {
   const previewUsersPhotos = document.querySelector('.pictures');
-  const randomPhotoTemplete = document.querySelector('#picture').content;
-  const randomPhotoElement = randomPhotoTemplete.querySelector('.picture');
+  const randomPhotoTemplete = document.querySelector('#picture').content.querySelector('.picture');
 
   const previewUsersPhotosFragment = document.createDocumentFragment();
 
-  photo.forEach(({url, comments, likes}) => {
-    const previewPhoto = randomPhotoElement.cloneNode(true);
-    previewPhoto.querySelector('.picture__img').src = url;
+  photos.forEach(({url, likes, comments}) => {
+    const previewPhoto = randomPhotoTemplete.cloneNode(true);
+    previewPhoto.querySelector('img').src = url;
+    previewPhoto.querySelector('.picture__likes').textContent = likes;
     previewPhoto.querySelector('.picture__comments').textContent = comments.length;
-    previewPhoto.querySelector('.picture__like').textContent = likes;
     previewUsersPhotosFragment.append(previewPhoto);
   });
 
   previewUsersPhotos.append(previewUsersPhotosFragment);
 }
 
-export {createRandomPhoto};
+export { createRandomPhoto };
