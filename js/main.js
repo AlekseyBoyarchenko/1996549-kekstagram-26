@@ -1,3 +1,5 @@
 import {createPhotosDecriptions} from './data.js';
+import {createRandomPhoto} from './preview-photos.js';
 
-createPhotosDecriptions ();
+const PHOTO = createPhotosDecriptions();
+createRandomPhoto(PHOTO);

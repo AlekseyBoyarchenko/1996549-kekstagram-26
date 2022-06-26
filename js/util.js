@@ -1,17 +1,11 @@
 function getRandomNumber (min, max) {
-  if (0 <= min && min < max) {
-    return Math.round(Math.random() * (max - min) + min);
-  } else {
-    return 'Числа диапазона должны быть больше или равны нулю, а также значание "от" должно быть меньше значения "до"';
-  }
+  const minNumber = Math.min(Math.abs(min), Math.abs(max));
+  const maxNumber = Math.max(Math.abs(min), Math.abs(max));
+  return Math.floor(minNumber + Math.random() * (maxNumber - minNumber + 1));
 }
 
 function checkStringLength (string, maxLength) {
-  if (string.length <= maxLength) {
-    return true;
-  } else {
-    return false;
-  }
+  return string.length <= maxLength;
 }
 
 export {getRandomNumber};
