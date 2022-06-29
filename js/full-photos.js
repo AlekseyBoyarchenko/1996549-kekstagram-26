@@ -1,3 +1,5 @@
+import {isEscapeKey} from './util.js';
+
 function createRandomFullPhoto (photos) {
 
   const body = document.querySelector('body');
@@ -13,6 +15,20 @@ function createRandomFullPhoto (photos) {
   const closeButton = fullPhoto.querySelector('.big-picture__cancel');
 
   const commentListFragment = document.createDocumentFragment();
+
+  function onFullPhotoEscKeydown (evt) {
+    if (isEscapeKey(evt)) {
+      evt.preventDefault();
+      closeFullPhoto ();
+    }
+  }
+
+  function closeFullPhoto () {
+    fullPhoto.classList.add('hidden');
+    body.classList.remove('modal-open');
+
+    document.removeEventListener('keydown', onFullPhotoEscKeydown);
+  }
 
   function addPhotoClickHandler (photo, {url, likes, description, comments}) {
     photo.addEventListener('click', () => {
@@ -38,6 +54,8 @@ function createRandomFullPhoto (photos) {
       });
 
       commentsList.append(commentListFragment);
+
+      document.addEventListener('keydown', onFullPhotoEscKeydown);
     });
   }
 
@@ -45,17 +63,7 @@ function createRandomFullPhoto (photos) {
     addPhotoClickHandler(previewPhoto[i], photos[i]);
   }
 
-  closeButton.addEventListener ('click', () => {
-    fullPhoto.classList.add('hidden');
-    body.classList.remove('modal-open');
-  });
-
-  document.addEventListener('keydown', (evt) => {
-    if (evt.key === 'Escape') {
-      fullPhoto.classList.add('hidden');
-      body.classList.remove('modal-open');
-    }
-  });
+  closeButton.addEventListener ('click', closeFullPhoto);
 }
 
 export { createRandomFullPhoto };
