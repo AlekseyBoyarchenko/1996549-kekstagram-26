@@ -1,7 +1,7 @@
 import {getRandomNumber} from './util.js';
 
 const MAX_PHOTOS_DESCRIPTION = 25;
-const MAX_COMMENTS_PHOTO = MAX_PHOTOS_DESCRIPTION*2;
+const MAX_COMMENTS_PHOTO = 10000;
 
 const NAMES = [
   'Вася',
@@ -56,7 +56,7 @@ function CreateComment () {
 }
 
 function CreateCommentList () {
-  const COMMENT_COUNT = getRandomNumber(1,2);
+  const COMMENT_COUNT = getRandomNumber(1,10);
   const COMMENT_PHOTO = Array.from({length: COMMENT_COUNT}, CreateComment);
   return COMMENT_PHOTO;
 }
