@@ -8,5 +8,8 @@ function checkStringLength (string, maxLength) {
   return string.length <= maxLength;
 }
 
-export {getRandomNumber};
-export {checkStringLength};
+function isEscapeKey (evt) {
+  return evt.key === 'Escape';
+}
+
+export {getRandomNumber, checkStringLength, isEscapeKey};
