@@ -8,12 +8,12 @@ function createRandomPhoto (photos) {
 
   photos.forEach((photo) => {
     const {url, likes, comments} = photo;
-    const previewPhoto = randomPhotoTemplete.cloneNode(true);
-    previewPhoto.querySelector('img').src = url;
-    previewPhoto.querySelector('.picture__likes').textContent = likes;
-    previewPhoto.querySelector('.picture__comments').textContent = comments.length;
-    previewPhoto.addEventListener('click', () => createRandomFullPhoto(photo));
-    previewUsersPhotosFragment.append(previewPhoto);
+    const previewPhotoElement = randomPhotoTemplete.cloneNode(true);
+    previewPhotoElement.querySelector('img').src = url;
+    previewPhotoElement.querySelector('.picture__likes').textContent = likes;
+    previewPhotoElement.querySelector('.picture__comments').textContent = comments.length;
+    previewPhotoElement.addEventListener('click', () => createRandomFullPhoto(photo));
+    previewUsersPhotosFragment.append(previewPhotoElement);
   });
 
   previewUsersPhotos.append(previewUsersPhotosFragment);

@@ -56,7 +56,7 @@ function CreateComment () {
 }
 
 function CreateCommentList () {
-  const COMMENT_COUNT = getRandomNumber(1,16);
+  const COMMENT_COUNT = getRandomNumber(1, 16);
   const COMMENT_PHOTO = Array.from({length: COMMENT_COUNT}, CreateComment);
   return COMMENT_PHOTO;
 }

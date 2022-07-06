@@ -43,11 +43,11 @@ function createRandomFullPhoto ({url, likes, description, comments}) {
   function commentsAdd () {
     comments.slice(0, commentCount += MAX_COMMENTS_AMOUNT).forEach((comment) => {
       const commentElementCopy = commentItem.cloneNode(true);
-      const commentAvatar = commentElementCopy.querySelector('.social__comment .social__picture');
-      const commentMesssage = commentElementCopy.querySelector('.social__comment .social__text');
-      commentAvatar.src = comment.avatar;
-      commentAvatar.alt = comment.name;
-      commentMesssage.textContent = comment.message;
+      const commentAvatarElement = commentElementCopy.querySelector('.social__comment .social__picture');
+      const commentMesssageElement = commentElementCopy.querySelector('.social__comment .social__text');
+      commentAvatarElement.src = comment.avatar;
+      commentAvatarElement.alt = comment.name;
+      commentMesssageElement.textContent = comment.message;
       commentListFragment.append(commentElementCopy);
     });
 
@@ -57,8 +57,7 @@ function createRandomFullPhoto ({url, likes, description, comments}) {
     if (commentCount >= comments.length) {
       commentLoader.classList.add('hidden');
       commentCounter.textContent = `${comments.length} из ${comments.length} комментариев`;
-    }
-    else {
+    } else {
       commentLoader.classList.remove('hidden');
       commentCounter.textContent = `${commentCount} из ${comments.length} комментариев`;
     }
