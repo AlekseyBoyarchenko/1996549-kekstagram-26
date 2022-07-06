@@ -13,6 +13,8 @@ const closeButton = fullPhoto.querySelector('.big-picture__cancel');
 
 const commentListFragment = document.createDocumentFragment();
 
+const MAX_COMMENTS_AMOUNT = 5;
+
 function onFullPhotoEscKeydown (evt) {
   if (isEscapeKey(evt)) {
     evt.preventDefault();
@@ -30,27 +32,42 @@ closeButton.addEventListener ('click', closeFullPhoto);
 
 function createRandomFullPhoto ({url, likes, description, comments}) {
   fullPhoto.classList.remove('hidden');
-  commentCounter.classList.add('hidden');
-  commentLoader.classList.add('hidden');
   body.classList.add('modal-open');
 
   photoImage.src = url;
   likesCount.textContent = likes;
   photoDescription.textContent = description;
 
-  commentsList.textContent = '';
+  let commentCount = 0;
 
-  comments.forEach((comment) => {
-    const commentElementCopy = commentItem.cloneNode(true);
-    const commentAvatar = commentElementCopy.querySelector('.social__comment .social__picture');
-    const commentMesssage = commentElementCopy.querySelector('.social__comment .social__text');
-    commentAvatar.src = comment.avatar;
-    commentAvatar.alt = comment.name;
-    commentMesssage.textContent = comment.message;
-    commentListFragment.append(commentElementCopy);
+  function commentsAdd () {
+    comments.slice(0, commentCount += MAX_COMMENTS_AMOUNT).forEach((comment) => {
+      const commentElementCopy = commentItem.cloneNode(true);
+      const commentAvatarElement = commentElementCopy.querySelector('.social__comment .social__picture');
+      const commentMesssageElement = commentElementCopy.querySelector('.social__comment .social__text');
+      commentAvatarElement.src = comment.avatar;
+      commentAvatarElement.alt = comment.name;
+      commentMesssageElement.textContent = comment.message;
+      commentListFragment.append(commentElementCopy);
+    });
+
+    commentsList.textContent = '';
+    commentsList.append(commentListFragment);
+
+    if (commentCount >= comments.length) {
+      commentLoader.classList.add('hidden');
+      commentCounter.textContent = `${comments.length} из ${comments.length} комментариев`;
+    } else {
+      commentLoader.classList.remove('hidden');
+      commentCounter.textContent = `${commentCount} из ${comments.length} комментариев`;
+    }
+  }
+
+  commentsAdd();
+
+  commentLoader.addEventListener ('click', () => {
+    commentsAdd();
   });
-
-  commentsList.append(commentListFragment);
 
   document.addEventListener('keydown', onFullPhotoEscKeydown);
 }
