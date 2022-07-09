@@ -1,4 +1,6 @@
 import {isEscapeKey} from './util.js';
+import {getStartZoomValue, addClickZoomButton} from './zoom-photo.js';
+import {resetPhotoEffects} from './photo-effects.js';
 
 const body = document.querySelector('body');
 const uploadFile = document.querySelector('#upload-file');
@@ -24,6 +26,9 @@ function openUploadForm () {
   photoEdit.classList.remove('hidden');
   body.classList.add('modal-open');
   document.addEventListener('keydown', onFormEscKeydown);
+  getStartZoomValue();
+  addClickZoomButton();
+  resetPhotoEffects();
 }
 
 uploadFile.addEventListener('change', openUploadForm);
