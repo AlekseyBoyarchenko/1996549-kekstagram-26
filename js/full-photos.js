@@ -51,7 +51,7 @@ function createRandomFullPhoto ({url, likes, description, comments}) {
       commentListFragment.append(commentElementCopy);
     });
 
-    commentsList.textContent = '';
+    commentsList.innerHTML = '';
     commentsList.append(commentListFragment);
 
     if (commentCount >= comments.length) {
