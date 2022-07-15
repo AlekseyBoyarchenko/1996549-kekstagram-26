@@ -7,30 +7,30 @@ const START_ZOOM_VALUE = 100;
 
 let currentZoomValue = START_ZOOM_VALUE;
 
-function getStartZoomValue () {
+const getStartZoomValue = () => {
   previewPhoto.style.transform = '';
   scaleValueInput.value = `${START_ZOOM_VALUE}%`;
-}
+};
 
-function getZoomOutClick () {
+const getZoomOutClick = () => {
   if (currentZoomValue > 25) {
     currentZoomValue -= 25;
     scaleValueInput.value = `${currentZoomValue}%`;
     previewPhoto.style.transform = `scale(${currentZoomValue / 100})`;
   }
-}
+};
 
-function getZoomInClick () {
+const getZoomInClick = () => {
   if (currentZoomValue < 100) {
     currentZoomValue += 25;
     scaleValueInput.value = `${currentZoomValue}%`;
     previewPhoto.style.transform = `scale(${currentZoomValue / 100})`;
   }
-}
+};
 
-function addClickZoomButton () {
+const addClickZoomButton = () => {
   scaleSmallerButton.addEventListener('click', getZoomOutClick);
   scaleBiggerButton.addEventListener('click', getZoomInClick);
-}
+};
 
 export { getStartZoomValue, addClickZoomButton };

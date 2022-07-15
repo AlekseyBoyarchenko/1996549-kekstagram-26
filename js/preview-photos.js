@@ -1,6 +1,6 @@
 import {createRandomFullPhoto} from './full-photos.js';
 
-function createRandomPhoto (photos) {
+const createRandomPhoto = (photos) => {
   const previewUsersPhotos = document.querySelector('.pictures');
   const randomPhotoTemplete = document.querySelector('#picture').content.querySelector('.picture');
 
@@ -17,6 +17,6 @@ function createRandomPhoto (photos) {
   });
 
   previewUsersPhotos.append(previewUsersPhotosFragment);
-}
+};
 
 export { createRandomPhoto };
