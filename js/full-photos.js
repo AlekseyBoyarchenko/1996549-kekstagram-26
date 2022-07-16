@@ -15,6 +15,12 @@ const commentListFragment = document.createDocumentFragment();
 
 const MAX_COMMENTS_AMOUNT = 5;
 
+const closeFullPhoto = () => {
+  fullPhoto.classList.add('hidden');
+  body.classList.remove('modal-open');
+  document.removeEventListener('keydown', onFullPhotoEscKeydown);
+};
+
 function onFullPhotoEscKeydown (evt) {
   if (isEscapeKey(evt)) {
     evt.preventDefault();
@@ -22,15 +28,9 @@ function onFullPhotoEscKeydown (evt) {
   }
 }
 
-function closeFullPhoto () {
-  fullPhoto.classList.add('hidden');
-  body.classList.remove('modal-open');
-  document.removeEventListener('keydown', onFullPhotoEscKeydown);
-}
-
 closeButton.addEventListener ('click', closeFullPhoto);
 
-function createRandomFullPhoto ({url, likes, description, comments}) {
+const createRandomFullPhoto = ({url, likes, description, comments}) => {
   fullPhoto.classList.remove('hidden');
   body.classList.add('modal-open');
 
@@ -40,7 +40,7 @@ function createRandomFullPhoto ({url, likes, description, comments}) {
 
   let commentCount = 0;
 
-  function commentsAdd () {
+  const commentsAdd = () => {
     comments.slice(0, commentCount += MAX_COMMENTS_AMOUNT).forEach((comment) => {
       const commentElementCopy = commentItem.cloneNode(true);
       const commentAvatarElement = commentElementCopy.querySelector('.social__comment .social__picture');
@@ -61,7 +61,7 @@ function createRandomFullPhoto ({url, likes, description, comments}) {
       commentLoader.classList.remove('hidden');
       commentCounter.textContent = `${commentCount} из ${comments.length} комментариев`;
     }
-  }
+  };
 
   commentsAdd();
 
@@ -70,6 +70,6 @@ function createRandomFullPhoto ({url, likes, description, comments}) {
   });
 
   document.addEventListener('keydown', onFullPhotoEscKeydown);
-}
+};
 
 export { createRandomFullPhoto };

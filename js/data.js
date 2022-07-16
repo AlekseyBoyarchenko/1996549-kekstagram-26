@@ -46,22 +46,20 @@ for (let i = 1; i <= MAX_COMMENTS_PHOTO; i++) {
   commentIdNumders.push(i);
 }
 
-function CreateComment () {
-  return {
-    id: commentIdNumders.shift(),
-    avatar: `img/avatar-${getRandomNumber (1, 6)}.svg`,
-    message: MESSAGES[getRandomNumber (0, MESSAGES.length-1)],
-    name: NAMES[getRandomNumber (0, NAMES.length-1)],
-  };
-}
+const CreateComment = () => ({
+  id: commentIdNumders.shift(),
+  avatar: `img/avatar-${getRandomNumber (1, 6)}.svg`,
+  message: MESSAGES[getRandomNumber (0, MESSAGES.length-1)],
+  name: NAMES[getRandomNumber (0, NAMES.length-1)],
+});
 
-function CreateCommentList () {
+const CreateCommentList = () => {
   const COMMENT_COUNT = getRandomNumber(1, 16);
   const COMMENT_PHOTO = Array.from({length: COMMENT_COUNT}, CreateComment);
   return COMMENT_PHOTO;
-}
+};
 
-function CreatePhoto () {
+const CreatePhoto = () => {
   const id = idNumders.shift();
   return {
     id,
@@ -70,10 +68,8 @@ function CreatePhoto () {
     likes: getRandomNumber(15, 200),
     comments: CreateCommentList (),
   };
-}
+};
 
-function createPhotosDecriptions () {
-  return Array.from({length: MAX_PHOTOS_DESCRIPTION}, CreatePhoto);
-}
+const createPhotosDecriptions = () => Array.from({length: MAX_PHOTOS_DESCRIPTION}, CreatePhoto);
 
 export {createPhotosDecriptions};

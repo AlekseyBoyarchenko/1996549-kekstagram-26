@@ -77,15 +77,15 @@ noUiSlider.create(effectSlider, {
   connect: 'lower',
 });
 
-function resetPhotoEffects () {
+const resetPhotoEffects = () => {
   effectLevelValue.value = '';
   upLoadPhoto.className = '';
   upLoadPhoto.style.filter = '';
   effectSliderConteiner.classList.add('hidden');
   effectSlider.setAttribute('disabled', true);
-}
+};
 
-function getPhotoEffects (evt) {
+const getPhotoEffects = (evt) => {
   if (evt.target.matches('input[type="radio"]')) {
     const currentValue = evt.target.value;
     if (currentValue === 'none') {
@@ -106,10 +106,10 @@ function getPhotoEffects (evt) {
       upLoadPhoto.style.filter = `${filter}(${effectLevelValue.value}${unit}`;
     });
   }
-}
+};
 
-function applyPhotoEffects () {
+const applyPhotoEffects = () => {
   effectsContainer.addEventListener('change', getPhotoEffects);
-}
+};
 
 export { resetPhotoEffects, applyPhotoEffects };
