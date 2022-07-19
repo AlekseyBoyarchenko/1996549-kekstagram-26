@@ -103,7 +103,7 @@ const getPhotoEffects = (evt) => {
       effectLevelValue.value = effectSlider.noUiSlider.get();
 
       const {filter, unit} = photoEffects[currentValue];
-      upLoadPhoto.style.filter = `${filter}(${effectLevelValue.value}${unit}`;
+      upLoadPhoto.style.filter = `${filter}(${effectLevelValue.value}${unit})`;
     });
   }
 };
