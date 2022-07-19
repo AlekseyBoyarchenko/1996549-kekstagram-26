@@ -6,6 +6,7 @@ import {showAlert, randomIndexPhoto, sortPhotoComments, debounce} from './util.j
 import {uploadFormSuccessSubmit, uploadFormErrorSubmit} from './submit-messages.js';
 import {photoUploadFormSubmit} from './upload-form.js';
 import {defaultSorting, randomSorting, popularSorting} from './sort-photos.js';
+import {loadUserPhoto} from './user-photo-load.js';
 
 const TIME_OUT_DELAY = 500;
 const RANDOM_PHOTO_AMOUNT = 10;
@@ -26,3 +27,5 @@ getData((photos) => {
 }, showAlert);
 
 photoUploadFormSubmit(uploadFormSuccessSubmit, uploadFormErrorSubmit);
+
+loadUserPhoto();
