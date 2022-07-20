@@ -32,16 +32,6 @@ const showAlert = () => {
   }, ERROR_TIME);
 };
 
-const randomIndexPhoto = (arr) => {
-  for (let i = arr.length - 1; i > 0; i--) {
-    const j = getRandomNumber(0, i);
-    [arr[i], arr[j]] = [arr[j], arr[i]];
-  }
-  return arr;
-};
-
-const sortPhotoComments = (photoA, photoB) => (photoB.comments.length - photoA.comments.length);
-
 const debounce = (callback, timeoutDelay) => {
   let timeoutId;
 
@@ -51,4 +41,4 @@ const debounce = (callback, timeoutDelay) => {
   };
 };
 
-export {getRandomNumber, checkStringLength, isEscapeKey, showAlert, randomIndexPhoto, sortPhotoComments, debounce};
+export {getRandomNumber, checkStringLength, isEscapeKey, showAlert, debounce};

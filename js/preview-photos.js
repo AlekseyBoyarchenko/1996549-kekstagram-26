@@ -1,11 +1,10 @@
 import {createRandomFullPhoto} from './full-photos.js';
 
-const previewUsersPhotos = document.querySelector('.pictures');
-const randomPhotoTemplete = document.querySelector('#picture').content.querySelector('.picture');
-const previewUsersPhotosFragment = document.createDocumentFragment();
-
-
 const createRandomPhoto = (photos) => {
+  const previewUsersPhotos = document.querySelector('.pictures');
+  const randomPhotoTemplete = document.querySelector('#picture').content.querySelector('.picture');
+  const previewUsersPhotosFragment = document.createDocumentFragment();
+
   photos.forEach((photo) => {
     const {url, likes, comments} = photo;
     const previewPhotoElement = randomPhotoTemplete.cloneNode(true);
@@ -16,7 +15,6 @@ const createRandomPhoto = (photos) => {
     previewUsersPhotosFragment.append(previewPhotoElement);
   });
 
-  previewUsersPhotos.querySelectorAll('.picture').forEach((userPhoto) => userPhoto.remove());
   previewUsersPhotos.append(previewUsersPhotosFragment);
 };
 
