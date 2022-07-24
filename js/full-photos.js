@@ -41,7 +41,8 @@ const createRandomFullPhoto = ({url, likes, description, comments}) => {
   let commentCount = 0;
 
   const commentsAdd = () => {
-    comments.slice(0, commentCount += MAX_COMMENTS_AMOUNT).forEach((comment) => {
+    const commentLenght = commentCount += MAX_COMMENTS_AMOUNT;
+    comments.slice(0, commentLenght ).forEach((comment) => {
       const commentElementCopy = commentItem.cloneNode(true);
       const commentAvatarElement = commentElementCopy.querySelector('.social__comment .social__picture');
       const commentMesssageElement = commentElementCopy.querySelector('.social__comment .social__text');

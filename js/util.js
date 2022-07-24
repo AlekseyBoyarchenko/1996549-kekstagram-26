@@ -1,13 +1,5 @@
 const ERROR_TIME = 5000;
 
-const getRandomNumber = (min, max) => {
-  const minNumber = Math.min(Math.abs(min), Math.abs(max));
-  const maxNumber = Math.max(Math.abs(min), Math.abs(max));
-  return Math.floor(minNumber + Math.random() * (maxNumber - minNumber + 1));
-};
-
-const checkStringLength = (string, maxLength) => string.length <= maxLength;
-
 const isEscapeKey = (evt) => evt.key === 'Escape';
 
 const showAlert = () => {
@@ -41,4 +33,4 @@ const debounce = (callback, timeoutDelay) => {
   };
 };
 
-export {getRandomNumber, checkStringLength, isEscapeKey, showAlert, debounce};
+export {isEscapeKey, showAlert, debounce};
